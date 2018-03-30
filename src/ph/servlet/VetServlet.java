@@ -39,7 +39,9 @@ public class VetServlet extends HttpServlet
         String sname=request.getParameter("sname");
         try
         {
-            List<Vet> vets=new VetDAO().search(vname, sname);
+//            VetDAO vetDAO = new VetDAO();
+//            List<Vet> vets= vetDAO.search(vname, sname);
+            List<Vet> vets = new VetDAO().search(vname, sname);
             if(0==vets.size())
             {
                 request.setAttribute("msg", "没有相关医生信息");
