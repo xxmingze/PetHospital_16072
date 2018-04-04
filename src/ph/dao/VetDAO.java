@@ -40,7 +40,7 @@ public class VetDAO
             con = DriverManager.getConnection("jdbc:mysql://localhost:3306/db_ph", "root", "root");
             // 1.找符合条件的医生
 //            String sql = "SELECT distinct t_vet.* FROM db_ph.t_vet_speciality INNER JOIN db_ph.t_vet ON (t_vet_speciality.vetId = t_vet.id) INNER JOIN db_ph.t_speciality ON (t_vet_speciality.specId = t_speciality.id) where t_vet.name like ? and t_speciality.name like ?";
-            String sql = "select t_vet.*\n" +
+            String sql = "select distinct t_vet.*\n" +
                         "from t_vet, t_speciality, t_vet_speciality\n" +
                     "where t_vet.id = t_vet_speciality.vetId AND\n" +
                     "t_speciality.id = t_vet_speciality.specId AND\n" +
