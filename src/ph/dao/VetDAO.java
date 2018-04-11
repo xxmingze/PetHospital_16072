@@ -127,7 +127,7 @@ public class VetDAO
             con = DriverManager.getConnection("jdbc:mysql://localhost:3306/db_ph", "root", "root");
             //JDBC默认是事务自动提交  即所有的executeUpdate会立即更新到数据库，如果需要使用事务要 1  停止自动提交  2.在操作完成后手动提交  3 出现异常回滚
             //事务1  停止自动提交
-//            con.setAutoCommit(false);
+            con.setAutoCommit(false);
             // 1.将vet.name 保存到 t_vet
             ps = con.prepareStatement("insert into t_vet value(null,?)", PreparedStatement.RETURN_GENERATED_KEYS);
             ps.setString(1, vet.getName());
