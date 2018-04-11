@@ -210,11 +210,11 @@ public class UserDAO
         }
         finally
         {
-            if(ps!=null)
+            if(ps != null)
             {
                 ps.close();
             }
-            if(con!=null)
+            if(con != null)
             {
                 con.close();
             }
