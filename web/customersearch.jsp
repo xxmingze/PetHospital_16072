@@ -19,7 +19,7 @@
     </div>
     <div id="main">
         <form action="CustomerServlet" method="post">
-            <input type="hidden" name="m" value="search">
+            <input type="hidden" name="m" value="searchCustomer">
             <!-- type="hidden"  隐藏表单控件  用来传递值  这个控件在前台页面不显示 -->
             <table>
                 <tr>

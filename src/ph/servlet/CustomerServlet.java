@@ -21,9 +21,13 @@ public class CustomerServlet extends HttpServlet
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException
     {
         String m = request.getParameter("m");
-        if("search".equals(m))//查询已有客户，来自于customersearch.jsp提交的表单
+        if("searchCustomer".equals(m))//查询已有客户，来自于customersearch.jsp提交的表单
         {
             searchCustomer(request, response);
+        }
+        else if("saveCustomer".equals(m))//保存新的客户，来自于customeradd.jsp提交的表单
+        {
+            saveCustomer(request, response);
         }
     }
 
@@ -71,6 +75,36 @@ public class CustomerServlet extends HttpServlet
             UserDAO userDAO = new UserDAO();
             userDAO.delete(id);
             request.setAttribute("msg", "删除客户成功");
+            request.getRequestDispatcher("/customersearch.jsp").forward(request, response);
+        }
+        catch (Exception e)
+        {
+            request.setAttribute("msg", e.getMessage());
+            request.getRequestDispatcher("/customersearch.jsp").forward(request, response);
+        }
+    }
+
+    private void saveCustomer(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException
+    {
+        String name = request.getParameter("name");
+        if("".equals(name))//客户姓名不能为空
+        {
+            request.setAttribute("msg", "请输入客户姓名");
+            request.getRequestDispatcher("/customeradd.jsp").forward(request, response);//这里可以直接转发到 customeradd.jsp
+            return;// 跳转到customeradd.jsp后，函数直接返回，add by hlzhang, 20180122
+        }
+
+        User user = new User();
+        user.setName(request.getParameter("name"));
+        user.setAddress(request.getParameter("address"));
+        user.setTel(request.getParameter("tel"));
+        user.setRole("customer");
+        user.setPwd("123456");
+
+        try
+        {
+            new UserDAO().save(user);
+            request.setAttribute("msg", "添加客户成功");
             request.getRequestDispatcher("/customersearch.jsp").forward(request, response);
         }
         catch (Exception e)
