@@ -126,8 +126,8 @@ public class CustomerServlet extends HttpServlet
             PetDAO petDAO = new PetDAO();
             int ownerId = Integer.valueOf(request.getParameter("id"));//得到customersearch_resultl.jsp的“查看明细”链接发送来的参数客户id
             User user = userDAO.getById(ownerId);
-//            List<Pet> pets = petDAO.getPetsByOwnerId(ownerId);
-//            user.setPets(pets);
+            List<Pet> pets = petDAO.getPetsByOwnerId(ownerId);
+            user.setPets(pets);
             request.setAttribute("user", user);
             request.getRequestDispatcher("/customerdetail.jsp").forward(request, response);
         }
