@@ -53,7 +53,7 @@
             <tr>
                 <td></td>
                 <td>
-                    <a href="PetServlet?m=toAdd&cid=<%=user.getId()%>&cname=<%=URLEncoder.encode(user.getName(), "utf-8")%>">添加新宠物</a>
+                    <%--<a href="PetServlet?m=toAdd&cid=<%=user.getId()%>&cname=<%=URLEncoder.encode(user.getName(), "utf-8")%>">添加新宠物</a>--%>
                     <%--<input value="返回" type="button" onclick="history.back(-1)"/用history.back不合理，导致如果在添加宠物页面保存宠物成功并跳转到本页后，又返回了添加宠物页面，改为指定跳转到客户查询页 --%>
                     <input value="返回" type="button" onclick="location.href='customersearch.jsp'"/>
 
@@ -66,7 +66,7 @@
         <table>
             <tr>
                 <td colspan="2">宠物信息</td>
-                <td>操作</td>
+                <%--<td>操作</td>--%>
             </tr>
 
             <%
@@ -77,10 +77,10 @@
                 <td><img src="<%=pet.getPhoto()%>" width="48px" height="48px"></td>
                 <td class="minWidth">姓名:<%=pet.getName()%><br/>生日:<%=pet.getBirthdate()%>
                 </td>
-                <td class="minWidth">
-                    <a href="PetServlet?m=delete&pid=<%=pet.getId()%>&cid=<%=user.getId()%>" onclick=" return confirmDialog();">删除</a>|
-                    <a href="VisitServlet?m=toAdd&customerId=<%=user.getId()%>&petId=<%=pet.getId()%>&petName=<%=URLEncoder.encode(pet.getName(), "UTF-8")%>">添加病例</a>|
-                    <a href="VisitServlet?m=showHistory&petId=<%=pet.getId()%>">浏览病例</a></td>
+                <%--<td class="minWidth">--%>
+                    <%--<a href="PetServlet?m=delete&pid=<%=pet.getId()%>&cid=<%=user.getId()%>" onclick=" return confirmDialog();">删除</a>|--%>
+                    <%--<a href="VisitServlet?m=toAdd&customerId=<%=user.getId()%>&petId=<%=pet.getId()%>&petName=<%=URLEncoder.encode(pet.getName(), "UTF-8")%>">添加病例</a>|--%>
+                    <%--<a href="VisitServlet?m=showHistory&petId=<%=pet.getId()%>">浏览病例</a></td>--%>
             </tr>
             <%
                 }
